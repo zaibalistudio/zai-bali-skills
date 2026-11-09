@@ -1,0 +1,11 @@
+{
+  "name": "zai-bali",
+  "displayName": "Z.AI BALI · Skills",
+  "version": "0.1.0",
+  "description": "Z.AI BALI skills for Claude Code (9 skills): 3D scenes in code, five look packs, Russian hook scoring, voice direction, Reels research.",
+  "author": { "name": "Z.AI BALI", "url": "https://github.com/zaibalistudio" },
+  "homepage": "https://github.com/zaibalistudio/zai-bali-skills",
+  "repository": "https://github.com/zaibalistudio/zai-bali-skills",
+  "license": "MIT",
+  "keywords": ["claude-code", "agent-skills", "skills", "reels", "three-js", "russian", "z-ai-bali"]
+}

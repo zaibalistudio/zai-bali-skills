@@ -1,0 +1,35 @@
+<!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;background:#000}</style>
+<script type="importmap">{"imports":{"three":"./three.module.js"}}</script></head><body><canvas id="c"></canvas>
+<script type="module">
+import * as THREE from 'three'; import * as S from './zb-styles.js';
+const style = new URLSearchParams(location.search).get('style'); const W=540,H=960;
+const r=new THREE.WebGLRenderer({canvas:document.getElementById('c'),antialias:true,preserveDrawingBuffer:true}); r.setSize(W,H,false);
+r.shadowMap.enabled=true; r.shadowMap.type=THREE.PCFSoftShadowMap;
+const scene=new THREE.Scene(); scene.background=new THREE.Color(0xf1e3d0);
+let cam=new THREE.PerspectiveCamera(42,W/H,.1,80); cam.position.set(3,2.4,6); cam.lookAt(0,.8,0);
+const mats=[]; let post=null, outlineList=[], mk=(c)=>new THREE.MeshStandardMaterial({color:c});
+if(style==='clay'){ const b=S.clayBump(); mk=(c)=>{const m=S.clayMaterial(c,b); mats.push(m); return m;}; S.clayLights(scene); scene.background=new THREE.Color(0xe9d7bd);}
+else if(style==='cel'){ mk=(c)=>S.celMaterial(c); const l=new THREE.DirectionalLight(0xffffff,2.2); l.position.set(-3,5,4); scene.add(l,new THREE.AmbientLight(0xffffff,.6)); scene.background=new THREE.Color(0xbfe3ff);}
+else if(style==='blueprint'||style==='matrix'){ scene.overrideMaterial = new THREE.MeshNormalMaterial(); scene.add(new THREE.HemisphereLight(0xffffff,0x224466,1.5)); const l=new THREE.DirectionalLight(0xffffff,2); l.position.set(-3,5,4); scene.add(l);
+  scene.background= style==='blueprint'? new THREE.Color(0x000000): new THREE.Color(0x000000);
+  post = style==='blueprint'? S.makePost(r,W,H,S.BLUEPRINT_FRAG,{},true): S.makePost(r,W,H,S.MATRIX_FRAG,{},false); mk=(c)=>new THREE.MeshStandardMaterial({color:c}); }
+else if(style==='paper'){ S.paperLights(scene); scene.background=new THREE.Color(0xf6e9d2); cam=new THREE.PerspectiveCamera(36,W/H,.1,80); cam.position.set(0,1.6,9); }
+else if(style==='iso'){ cam=S.isoCamera(W,H,9,true); S.isoLights(scene); scene.background=new THREE.Color(0xfbe8d2); mk=(c)=>new THREE.MeshLambertMaterial({color:c}); }
+const add=(g,c,x,y,z)=>{const m=new THREE.Mesh(g,mk(c)); m.position.set(x,y,z); m.castShadow=m.receiveShadow=true; scene.add(m); return m;};
+if(style==='paper'){
+  const wave=(amp,ph,y0,w=14)=>{const s=new THREE.Shape(); s.moveTo(-w/2,-4); s.lineTo(-w/2,y0); for(let x=-w/2;x<=w/2;x+=.5) s.lineTo(x,y0+amp*Math.sin(x*.6+ph)); s.lineTo(w/2,-4); s.closePath(); return s;};
+  [[0x7a9ec9,-4,.5,0,0.8],[0x5f8a6a,-2.4,.8,1,-0.2],[0x3f6b52,-.9,.7,2,-1.0],[0x27493b,.6,.5,3,-1.8]].forEach(([c,z,a,p,y],i)=>scene.add(S.paperPiece(wave(a,p,y),c,z)));
+  const sun=new THREE.Shape(); sun.absarc(0,0,1,0,6.29); const s=S.paperPiece(sun,0xf2b94b,-5.2); s.position.set(1.8,2.6,-5.2); scene.add(s);
+  const tr=new THREE.Shape(); tr.moveTo(0,0); tr.lineTo(.6,-1.4); tr.lineTo(-.6,-1.4); tr.closePath(); const t=S.paperPiece(tr,0x1d3a2c,.3); t.position.set(-1,-.2,.3); t.scale.set(1.5,1.5,1); scene.add(t);
+} else {
+  const fl=add(new THREE.PlaneGeometry(40,40),style==='cel'?0x9ad17a:0xcfa77c,0,0,0); fl.rotation.x=-Math.PI/2; fl.castShadow=false; if(style==='matrix') fl.visible=false;
+  const body=add(new THREE.BoxGeometry(1.6,1.5,1.4),0xe5483a,0,.75,0); body.geometry=new THREE.BoxGeometry(1.6,1.5,1.4,4,4,4);
+  [-.4,.4].forEach(x=>{ add(new THREE.SphereGeometry(.22,24,16),0xffffff,x,1.0,.72).scale.set(1,1.2,.6); add(new THREE.SphereGeometry(.09,16,12),0x111111,x,1.0,.86); });
+  add(new THREE.SphereGeometry(.55,32,24),0x4a90d9,-2,.55,.8); add(new THREE.CylinderGeometry(.35,.35,.9,24),0xf2b94b,2,.45,.4);
+  [0.5,-0.5].forEach(x=>add(new THREE.ConeGeometry(.18,.5,12),0xe5483a,x,1.75,0));
+  if(style==='cel') scene.children.filter(o=>o.isMesh&&o.geometry.type!=='PlaneGeometry').forEach(o=>S.celOutline(o,3,0x1a1020,H));
+}
+window.ready=true;
+window.render=(t)=>{ if(style==='clay') S.setClayTime(mats,t); if(style==='paper') cam.position.x=Math.sin(t*.6)*.8; if(style==='paper') cam.lookAt(0,.2,-1.5);
+  if(post) post.run(scene,cam,t); else r.render(scene,cam); return r.domElement.toDataURL('image/png').slice(22); };
+</script></body></html>

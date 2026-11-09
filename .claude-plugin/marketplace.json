@@ -1,0 +1,14 @@
+{
+  "name": "zai-bali-skills",
+  "description": "Z.AI BALI · open skills for Claude Code (unofficial, not affiliated with Anthropic)",
+  "owner": { "name": "Z.AI BALI", "url": "https://github.com/zaibalistudio" },
+  "plugins": [
+    {
+      "name": "zai-bali",
+      "source": "./",
+      "description": "Z.AI BALI skill pack (9 skills): 3D scene in code, five look packs (isometric, anime-cel, blueprint-matrix, paper-cut, clay), RU hook score, voice direction, Reels research.",
+      "category": "productivity",
+      "tags": ["skills", "video", "reels", "russian"]
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+assets/_work/
+assets/src/
+node_modules/
+*.log
+.env
+.DS_Store
+__pycache__/
+*.pyc
