@@ -27,7 +27,7 @@ jobs:
           set -euo pipefail
           read -r stars forks pushed < <(gh api "repos/$REPO" --jq '[.stargazers_count, .forks_count, .pushed_at] | @tsv')
           # commit count from the API's Link header (per_page=1 -> last page number == total)
-          commits=$(gh api -i "repos/$REPO/commits?per_page=1" | tr -d '\r' | awk -F'[=>&]' 'tolower($1) ~ /^link:/ {for(i=1;i<=NF;i++) if($i=="page" && $(i-1) ~ /per_page|\?/ ) last=$(i+1)} END{print last}')
+          commits=$(gh api -i "repos/$REPO/commits?per_page=1" | tr -d '\r' | grep -i '^link:' | grep -oE 'page=[0-9]+>; rel="last"' | grep -oE '[0-9]+' | head -1 || true)
           if [ -z "${commits:-}" ]; then
             commits=$(gh api "repos/$REPO/commits?per_page=1" --jq 'length')
           fi
