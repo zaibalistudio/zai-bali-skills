@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <b>Open skills for Claude Code: 3D video in code, five look packs, hook scoring, voice direction, Reels research (9 skills).</b><br>
+  <b>9 open skills for Claude Code: 3D video in code, five look packs, hook scoring, voice direction, Reels research.</b><br>
   Extracted from the workflow behind our own Reels.
 </p>
 
@@ -35,17 +35,21 @@ Manual install: copy any `skills/z-ai-bali-*` folder into `~/.claude/skills/`.
 
 ## What's inside
 
-| | Skill | What it does | Say this to Claude |
-|---|---|---|---|
-| 🧊 | [`z-ai-bali-3d-scene`](skills/z-ai-bali-3d-scene/SKILL.md) | Cinematic 3D room or object video with three.js in headless Chromium (no GPU), a camera path, light, dust, DOF, bloom and synthesized sound | "make a 3D clip of a cosy desk", «сделай 3D-ролик» |
-| 🎯 | [`z-ai-bali-hook-score`](skills/z-ai-bali-hook-score/SKILL.md) | Offline scorer for Russian Reel hooks on 5 checks, plus 26 rewrite formulas. A filter for weak hooks, not a view predictor | "score these hooks", «оцени хук» |
-| 🎙️ | [`z-ai-bali-voice-direction`](skills/z-ai-bali-voice-direction/SKILL.md) | Emotion tags, pauses, emphasis and settings for ElevenLabs-style voice acting; every claim marked doc / tested / hypothesis | "make this line sound alive", «оживи реплику» |
-| 📡 | [`z-ai-bali-hit-research`](skills/z-ai-bali-hit-research/SKILL.md) | Structured research of viral short videos in your own browser at human speed: detector, hit card, weekly summary. No login, no scraping | "break down this hit", «разбери хит» |
-| 📐 | [`z-ai-bali-style-isometric`](skills/z-ai-bali-style-isometric/SKILL.md) | Look pack: isometric miniature world, orthographic camera, flat face-shaded boxes, squash-on-landing | "isometric diorama", «изометрия» |
-| 🎌 | [`z-ai-bali-style-anime-cel`](skills/z-ai-bali-style-anime-cel/SKILL.md) | Look pack: anime / cel shading, 3-step toon light, ink outline, animation on twos | "anime look", «аниме» |
-| 🧪 | [`z-ai-bali-style-blueprint-matrix`](skills/z-ai-bali-style-blueprint-matrix/SKILL.md) | Look pack: engineering blueprint or Matrix glyph rain via post-processing | "blueprint", "matrix", «чертёж» |
-| ✂️ | [`z-ai-bali-style-paper-cut`](skills/z-ai-bali-style-paper-cut/SKILL.md) | Look pack: layered paper-cut diorama with real shadows and parallax | "paper cut", «бумажная аппликация» |
-| 🧸 | [`z-ai-bali-style-clay`](skills/z-ai-bali-style-clay/SKILL.md) | Look pack: plasticine / claymation with stop-motion wobble | "clay", «пластилин» |
+| Skill | What it does, and what to say |
+|---|---|
+| 🧊 [`z-ai-bali-3d-scene`](skills/z-ai-bali-3d-scene/SKILL.md) | Cinematic 3D room or object video with three.js in headless Chromium (no GPU), a camera path, light, dust, DOF, bloom and synthesized sound<br><sub>Say: "make a 3D clip of a cosy desk", «сделай 3D-ролик»</sub> |
+| 🎯 [`z-ai-bali-hook-score`](skills/z-ai-bali-hook-score/SKILL.md) | Offline scorer for Russian Reel hooks on 5 checks, plus 26 rewrite formulas. A filter for weak hooks, not a view predictor<br><sub>Say: "score these hooks", «оцени хук»</sub> |
+| 🎙️ [`z-ai-bali-voice-direction`](skills/z-ai-bali-voice-direction/SKILL.md) | Emotion tags, pauses, emphasis and settings for ElevenLabs-style voice acting; every claim marked doc / tested / hypothesis<br><sub>Say: "make this line sound alive", «оживи реплику»</sub> |
+| 📡 [`z-ai-bali-hit-research`](skills/z-ai-bali-hit-research/SKILL.md) | Structured research of viral short videos in your own browser at human speed: detector, hit card, weekly summary. No login, no scraping<br><sub>Say: "break down this hit", «разбери хит»</sub> |
+| 📐 [`z-ai-bali-style-isometric`](skills/z-ai-bali-style-isometric/SKILL.md) | Look pack: isometric miniature world, orthographic camera, flat face-shaded boxes, squash-on-landing<br><sub>Say: "isometric diorama", «изометрия»</sub> |
+| 🎌 [`z-ai-bali-style-anime-cel`](skills/z-ai-bali-style-anime-cel/SKILL.md) | Look pack: anime / cel shading, 3-step toon light, ink outline, animation on twos<br><sub>Say: "anime look", «аниме»</sub> |
+| 🧪 [`z-ai-bali-style-blueprint-matrix`](skills/z-ai-bali-style-blueprint-matrix/SKILL.md) | Look pack: engineering blueprint or Matrix glyph rain via post-processing<br><sub>Say: "blueprint", "matrix", «чертёж»</sub> |
+| ✂️ [`z-ai-bali-style-paper-cut`](skills/z-ai-bali-style-paper-cut/SKILL.md) | Look pack: layered paper-cut diorama with real shadows and parallax<br><sub>Say: "paper cut", «бумажная аппликация»</sub> |
+| 🧸 [`z-ai-bali-style-clay`](skills/z-ai-bali-style-clay/SKILL.md) | Look pack: plasticine / claymation with stop-motion wobble<br><sub>Say: "clay", «пластилин»</sub> |
+
+<p align="center">
+  <img src="assets/card-look-packs-v2.png" alt="Five Look Packs: isometric, anime-cel, blueprint-matrix, paper-cut, clay" width="100%">
+</p>
 
 <p align="center">
   <img src="assets/card-3d-scene-v2.png" alt="3D Scene in Code: 1.5 seconds per frame, no GPU" width="49%">
