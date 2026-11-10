@@ -35,7 +35,7 @@ jobs:
           updated=$(date -u -d "$pushed" +%Y-%m-%d)
 
           block="<!-- STATS:START -->
-          ⭐ Stars: **$stars** · 🍴 Forks: **$forks** · 🧩 Skills: **$skills** · 📝 Commits: **$commits** · 🕒 Last updated: **$updated** (UTC)
+          ⭐ Stars: <b>$stars</b> · 🍴 Forks: <b>$forks</b> · 🧩 Skills: <b>$skills</b> · 📝 Commits: <b>$commits</b> · 🕒 Last updated: <b>$updated</b> (UTC)
           <!-- STATS:END -->"
           block=$(printf '%s\n' "$block" | sed 's/^          //')
 
