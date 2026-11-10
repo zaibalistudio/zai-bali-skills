@@ -16,6 +16,11 @@
 
 <p align="center"><img src="assets/demo-3d-scene.gif" alt="A 7-second camera fly-through of a 3D room rendered in code, no GPU" width="300"><br><sub>A real render from <code>z-ai-bali-3d-scene</code>: three.js in headless Chromium, no GPU, camera path, light, dust, depth of field. 7 seconds, 3 MB.</sub></p>
 
+<p align="center">
+<!-- STATS:START -->
+<!-- STATS:END -->
+</p>
+
 ## Install (two lines)
 
 ```text
